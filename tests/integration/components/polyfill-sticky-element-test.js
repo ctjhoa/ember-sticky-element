@@ -52,7 +52,7 @@ testProps.size.forEach(size => {
   })
 });
 
-module('Integration | Component | sticky element', function(hooks) {
+module('Integration | Component | polyfill sticky element', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.before(function() {
@@ -121,11 +121,11 @@ module('Integration | Component | sticky element', function(hooks) {
       await render(hbs`
           <div class="row">
             <div class="col {{size}} {{if offView "off"}}">
-              {{#sticky-element class="sticky" bottom=bottom as |sticky|}}
+              {{#polyfill-sticky-element class="sticky" bottom=bottom as |sticky|}}
                 <p id="debug">
                   {{sticky-debug sticky}}
                 </p>
-              {{/sticky-element}}
+              {{/polyfill-sticky-element}}
             </div>
           </div>
         `);
@@ -145,11 +145,11 @@ module('Integration | Component | sticky element', function(hooks) {
           <div class="row">
             <div class="col {{size}} {{if offView "off"}}">
               {{#if visible}}
-                {{#sticky-element class="sticky" bottom=bottom as |sticky|}}
+                {{#polyfill-sticky-element class="sticky" bottom=bottom as |sticky|}}
                   <p id="debug">
                     {{sticky-debug sticky}}
                   </p>
-                {{/sticky-element}}
+                {{/polyfill-sticky-element}}
               {{/if}}
             </div>
           </div>
@@ -175,11 +175,11 @@ module('Integration | Component | sticky element', function(hooks) {
     await render(hbs`
       <div class="row">
         <div class="col {{size}} {{if offView "off"}}">
-          {{#sticky-element class="sticky" enabled=false as |sticky|}}
+          {{#polyfill-sticky-element class="sticky" enabled=false as |sticky|}}
             <p id="debug">
               {{sticky-debug sticky}}
             </p>
-          {{/sticky-element}}
+          {{/polyfill-sticky-element}}
         </div>
       </div>
     `);
@@ -204,11 +204,11 @@ module('Integration | Component | sticky element', function(hooks) {
     await render(hbs`
       <div class="row">
         <div class="col {{size}} {{if offView "off"}}" style={{{containerWidth}}}>
-          {{#sticky-element class="sticky" bottom=bottom as |sticky|}}
+          {{#polyfill-sticky-element class="sticky" bottom=bottom as |sticky|}}
             <p id="debug">
               {{sticky-debug sticky}}
             </p>
-          {{/sticky-element}}
+          {{/polyfill-sticky-element}}
         </div>
       </div>
     `);
